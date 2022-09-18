@@ -1,25 +1,7 @@
 # Edukator
 
-<!-- Improved compatibility of back to top link: See: https://github.com/othneildrew/Best-README-Template/pull/73 -->
 <a name="readme-top"></a>
-<!--
-*** Thanks for checking out the Best-README-Template. If you have a suggestion
-*** that would make this better, please fork the repo and create a pull request
-*** or simply open an issue with the tag "enhancement".
-*** Don't forget to give the project a star!
-*** Thanks again! Now go create something AMAZING! :D
--->
 
-<!-- PROJECT SHIELDS -->
-<!--
-*** I'm using markdown "reference style" links for readability.
-*** Reference links are enclosed in brackets [ ] instead of parentheses ( ).
-*** See the bottom of this document for the declaration of the reference variables
-*** for contributors-url, forks-url, etc. This is an optional, concise syntax you may use.
-*** https://www.markdownguide.org/basic-syntax/#reference-style-links
--->
-
-<!-- PROJECT LOGO -->
 <br />
 <div align="center">
   <a href="https://github.com/github_username/repo_name">
@@ -31,14 +13,11 @@
   <p align="center">
     This is an online learning platform in the same vain as Udemy and other MOOCs
     <br />
-    <a href="https://github.com/github_username/repo_name"><strong>Explore the docs »</strong></a>
+    <a href="https://github.com/udabasili/edukate"><strong>Explore the docs »</strong></a>
     <br />
     <br />
-    <a href="https://github.com/github_username/repo_name">View Demo</a>
+    <a href="https://edukate-udabasili.vercel.app ">View Demo</a>
     ·
-    <a href="https://github.com/github_username/repo_name/issues">Report Bug</a>
-    ·
-    <a href="https://github.com/github_username/repo_name/issues">Request Feature</a>
   </p>
 </div>
 
@@ -55,23 +34,17 @@
     <li>
       <a href="#getting-started">Getting Started</a>
       <ul>
-        <li><a href="#prerequisites">Prerequisites</a></li>
-        <li><a href="#installation">Installation</a></li>
+        <li><a href="#to-run">To Run</a></li>
+        <li><a href="#preview">Installation</a></li>
       </ul>
     </li>
-    <li><a href="#usage">Usage</a></li>
-    <li><a href="#roadmap">Roadmap</a></li>
-    <li><a href="#contributing">Contributing</a></li>
     <li><a href="#license">License</a></li>
     <li><a href="#contact">Contact</a></li>
-    <li><a href="#acknowledgments">Acknowledgments</a></li>
   </ol>
 </details>
 
 <!-- ABOUT THE PROJECT -->
 ## About The Project
-
-[![Product Name Screen Shot][product-screenshot]](https://example.com)
 
 This is an online learning platform in the same vein as Udemy and other MOOCs. You have a section for teachers and another section for students
 
@@ -102,31 +75,18 @@ Teachers can
 <p align="right">(<a href="#readme-top">back to top</a>)</p>
 
 <!-- GETTING STARTED -->
+
 ## Getting Started
 
-This is an example of how you may give instructions on setting up your project locally.
-To get a local copy up and running follow these simple example steps.
-
-<!-- USAGE EXAMPLES -->
 ### To Run
 
-The best way is to visit the Heroku website for the deployed website  [Edukate](https://edukate-udabasili.vercel.app ).
+Visit the Vercel website for the deployed website  [Edukate](https://edukate-udabasili.vercel.app).
 
-<!-- CONTRIBUTING -->
-## Contributing
+### Preview
 
-Contributions are what make the open source community such an amazing place to learn, inspire, and create. Any contributions you make are **greatly appreciated**.
-
-If you have a suggestion that would make this better, please fork the repo and create a pull request. You can also simply open an issue with the tag "enhancement".
-Don't forget to give the project a star! Thanks again!
-
-1. Fork the Project
-2. Create your Feature Branch (`git checkout -b feature/AmazingFeature`)
-3. Commit your Changes (`git commit -m 'Add some AmazingFeature'`)
-4. Push to the Branch (`git push origin feature/AmazingFeature`)
-5. Open a Pull Request
-
-<p align="right">(<a href="#readme-top">back to top</a>)</p>
+![Screenshot 2022-09-18 at 17-08-35 Home Page - Edukator](https://user-images.githubusercontent.com/33573587/190917123-e11796d8-d537-4eb8-91f3-12a1df64ff8b.png)
+![Screenshot 2022-09-18 at 17-11-21 DEVELOPMENT - Edukator](https://user-images.githubusercontent.com/33573587/190917126-f928e7e7-6fad-46a6-b50a-f4bbcf0d0e31.png)
+![Screenshot 2022-09-18 at 17-11-04 My Classes - Edukator](https://user-images.githubusercontent.com/33573587/190917127-0f276f1e-1cdc-4dc4-995d-c929c1592f7d.png)
 
 <!-- LICENSE -->
 ## License
