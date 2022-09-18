@@ -1,0 +1,11 @@
+ .courseListContainer {
+		position: relative;
+	overflow-y: auto;
+	grid-column: col-end 2 / full-end;
+	display: grid;
+	grid-template-columns: 1fr;
+	column-gap: 1.5rem;
+	row-gap: 2rem;
+	margin: 1rem;
+	min-height: 90vh;
+	}
