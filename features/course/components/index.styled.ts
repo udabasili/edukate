@@ -10,6 +10,11 @@ const Section = styled.section`
 	grid-template-columns: inherit;
 	min-height: 100vh;
 	padding: 2rem;
+
+	@media ${device.tabletPort} {
+		gap: 0;
+		padding: 0rem 0.5rem;
+	}
 `;
 
 export const CourseHeaderContainer = styled.header`
@@ -24,7 +29,7 @@ export const CourseHeaderContainer = styled.header`
 	@media ${device.tabletPort} {
 		align-items: center;
 		height: max-content;
-		padding: 4rem 0;
+		padding: 1rem 2rem;
 	}
 `;
 

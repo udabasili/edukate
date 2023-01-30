@@ -53,7 +53,6 @@ const Courses = () => {
 			return;
 		}
 		setHasMore(true);
-		// eslint-disable-next-line react-hooks/exhaustive-deps
 	}, [filteredCourses, unfilteredCourses]);
 
 	useEffect(() => {

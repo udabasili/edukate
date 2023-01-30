@@ -1,5 +1,5 @@
 import { Box, Center, Heading } from '@chakra-ui/react';
-import { CATEGORIES } from 'data/categories';
+import { CATEGORIES } from '@/data/categories';
 import React from 'react';
 import { Categories, CategoriesListContainer, Category } from './index.styled';
 import Image from 'next/image';

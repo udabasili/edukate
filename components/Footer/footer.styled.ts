@@ -18,5 +18,6 @@ export const FooterContainer = styled.footer`
 
 	@media ${device.tabletPort} {
 		margin-bottom: 10vh;
+		grid-template-columns: 1fr;
 	}
 `;

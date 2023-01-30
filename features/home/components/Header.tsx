@@ -1,5 +1,5 @@
 import NextLink from 'next/link';
-import { Center, Heading, Input, InputGroup, Button, InputRightElement } from '@chakra-ui/react';
+import { Center, Heading, Button } from '@chakra-ui/react';
 import React from 'react';
 import { HeaderContainer } from './index.styled';
 
@@ -16,7 +16,7 @@ export const Header = () => {
 				<Heading as="h4" size="md" mb={10}>
 					A broad selection of courses
 				</Heading>
-				<NextLink href="/courses" passHref>
+				<NextLink href="/courses" passHref legacyBehavior>
 					<Button bg="black" display="block" color="white">
 						Start Learning
 					</Button>

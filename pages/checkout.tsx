@@ -1,7 +1,7 @@
 import { MainLayout } from '@/components/Layout';
 import { CartResponse } from '@/features/cart/types';
 import { CheckoutForm } from '@/features/checkout';
-import { ShoppingCartList, ShoppingCartSummary } from '@/features/shopping-cart';
+import { ShoppingCartSummary } from '@/features/shopping-cart';
 import { withProtected } from '@/hook/route';
 import { firestoredb } from '@/lib/firebase';
 import { Context } from '@/store/appContext';
@@ -10,7 +10,6 @@ import { Elements } from '@stripe/react-stripe-js';
 import { loadStripe } from '@stripe/stripe-js';
 import { collection, onSnapshot, query, where } from 'firebase/firestore';
 import { GetServerSideProps, NextPage } from 'next';
-import { withAuthUser, AuthAction } from 'next-firebase-auth';
 import React, { useContext, useEffect, useState } from 'react';
 
 const STRIPE = process.env.NEXT_PUBLIC_STRIPE_API as string;
