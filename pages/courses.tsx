@@ -3,11 +3,6 @@ import { MainLayout } from '@/components/Layout';
 import { CourseList, Filter, Sort } from '@/features/courses';
 import { CourseType } from '@/features/courses/types';
 import category from '@/data/categories';
-import { FilterMobileButton } from '@/features/courses/components/index.styled';
-import { isBrowser } from 'react-device-detect';
-import { size } from '@/utils/responsive';
-import { useDisclosure } from '../hook';
-import { CustomDrawer } from '@/components/Elements';
 import {
 	collection,
 	DocumentData,
@@ -20,7 +15,6 @@ import {
 } from 'firebase/firestore';
 import { firestoredb } from '@/lib/firebase';
 import { getAllCourses } from '@/features/courses/api/getAllCourses';
-import { withProtected } from '@/hook/route';
 
 const levels = ['beginner', 'intermediate', 'expert', 'all'] as const;
 
