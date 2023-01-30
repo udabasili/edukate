@@ -3,22 +3,15 @@ import type { GetServerSideProps, NextPage } from 'next';
 import { MainLayout } from '@/components/Layout';
 import { CourseList, Filter, Sort } from '@/features/courses';
 import { CourseType } from '@/features/courses/types';
-import { UDEMY } from '@/data/udemy';
 import category from '@/data/categories';
 import { useRouter } from 'next/router';
-import { SectionHeader } from '@/components/SectionHeader';
 import { Flex, Heading } from '@chakra-ui/react';
-import { FilterMobileButton } from '@/features/courses/components/index.styled';
-import { CustomDrawer } from '@/components/Elements';
-import { size } from '@/utils/responsive';
-import { isBrowser } from 'react-device-detect';
 import { useDisclosure } from '@/hook/useDisclosure';
 import {
 	collection,
 	DocumentData,
 	getDocs,
 	limit,
-	orderBy,
 	query,
 	QueryDocumentSnapshot,
 	startAfter,
@@ -26,7 +19,6 @@ import {
 } from 'firebase/firestore';
 import { firestoredb } from '@/lib/firebase';
 import _ from 'lodash';
-import { AuthAction, withAuthUser } from 'next-firebase-auth';
 import { withProtected } from '@/hook/route';
 
 const levels = ['beginner', 'intermediate', 'expert', 'all'] as const;
@@ -44,20 +36,13 @@ type Props = {
 const LIMIT = 10;
 const Category: NextPage<Props> = ({ category }) => {
 	const router = useRouter();
-	let courses: Array<CourseType> = [];
 	const { pid } = router.query;
-
-	const { onOpen, onClose, isOpen } = useDisclosure();
 	const [hasMore, setHasMore] = useState(true);
-
-	const [filters, setFilter] = useState<Filter>({} as Filter);
-	const [filterSelected, setFilterSelected] = useState(false);
 	const [lastVisible, setLastVisible] = useState<QueryDocumentSnapshot<DocumentData>>();
-	const [filteredCourses, setFilteredCourses] = useState<Array<CourseType>>([]);
-	const [unfilteredCourses, setUnfilteredCourses] = useState<Array<CourseType>>([]);
+	const [courses, setCourses] = useState<Array<CourseType>>([]);
 
 	useEffect(() => {
-		setUnfilteredCourses([]);
+		setCourses([]);
 		const coursesRef = collection(firestoredb, 'courses');
 
 		(async () => {
@@ -74,18 +59,11 @@ const Category: NextPage<Props> = ({ category }) => {
 
 			const documentSnapshots = await getDocs(first);
 			const lastVisible = documentSnapshots.docs[documentSnapshots.docs.length - 1];
-			setUnfilteredCourses(filteredCoursesByCategory);
+			setCourses([...filteredCoursesByCategory]);
 			setLastVisible(lastVisible);
+			setHasMore(true);
 		})();
 	}, [category]);
-
-	useEffect(() => {
-		if (filterSelected && filteredCourses.length === 0) {
-			setHasMore(false);
-			return;
-		}
-		setHasMore(true);
-	}, [filteredCourses, unfilteredCourses]);
 
 	async function fetchMoreData() {
 		const next = query(
@@ -96,6 +74,7 @@ const Category: NextPage<Props> = ({ category }) => {
 		);
 
 		const documentSnapshots = await getDocs(next);
+		console.log(documentSnapshots, next);
 		const newCourses: Array<CourseType> = [];
 		documentSnapshots.forEach((doc) => {
 			newCourses.push({
@@ -103,52 +82,13 @@ const Category: NextPage<Props> = ({ category }) => {
 				id: doc.id,
 			});
 		});
-		setUnfilteredCourses([...unfilteredCourses, ...newCourses]);
-		// Get the last visible document
+		setCourses([...courses, ...newCourses]);
 		const last = documentSnapshots.docs[documentSnapshots.docs.length - 1];
+		if (!last) {
+			setHasMore(false);
+			return;
+		}
 		setLastVisible(last);
-		filterFunction();
-	}
-
-	useEffect(() => {
-		if (Object.keys(filters).length !== 0) {
-			filterFunction();
-		}
-	}, [filters]);
-
-	function filterFunction() {
-		if (Object.keys(filters).length !== 0) {
-			const currentCourses = unfilteredCourses
-				.filter((course) => {
-					if (filters.categories.length !== 0) {
-						return filters.categories.includes(course.category);
-					}
-					return course;
-				})
-				.filter((course) => {
-					if (filters.rating) {
-						return course.rating >= filters.rating;
-					}
-					return course;
-				})
-				.filter((course) => {
-					if (filters.level) {
-						if (filters.level === 'all') {
-							return course;
-						} else {
-							return course.level === filters.level;
-						}
-					}
-					return course;
-				});
-			setFilteredCourses([...currentCourses]);
-		}
-	}
-
-	if (filteredCourses.length !== 0) {
-		courses = filteredCourses;
-	} else {
-		courses = unfilteredCourses;
 	}
 
 	return (
@@ -160,26 +100,8 @@ const Category: NextPage<Props> = ({ category }) => {
 			</Flex>
 
 			<Sort />
-			<FilterMobileButton colorScheme="primaryDark" size="lg" onClick={onOpen}>
-				Filter
-			</FilterMobileButton>
 
-			<Filter
-				hideCategoriesFilter
-				setFilter={setFilter}
-				filterSelected={filterSelected}
-				setFilterSelected={setFilterSelected}
-			/>
 			<CourseList coursesList={courses} fetchMoreData={fetchMoreData} hasMore={hasMore} />
-			<CustomDrawer isOpen={isOpen} onClose={onClose} title="Search" onSubmit={function (): void {}}>
-				<Filter
-					hideCategoriesFilter
-					setFilter={setFilter}
-					className="mobile"
-					filterSelected={filterSelected}
-					setFilterSelected={setFilterSelected}
-				/>
-			</CustomDrawer>
 		</MainLayout>
 	);
 };
@@ -190,4 +112,4 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 	return { props: { category } };
 };
 
-export default withProtected<Props>(Category);
+export default Category;

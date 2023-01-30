@@ -10,29 +10,44 @@ import { ToastContainer } from 'react-toastify';
 import { FuegoProvider } from 'swr-firestore-v9';
 import { fuego } from '@/lib/firebase';
 import FirebaseAuthState from '@/features/auth/components/FirebaseAuthState';
+import { QueryClient, QueryClientProvider } from 'react-query';
 
 function MyApp({ Component, pageProps }: AppProps) {
+	const queryClient = new QueryClient({
+		defaultOptions: {
+			queries: {
+				refetchOnWindowFocus: false,
+				refetchOnMount: false,
+				refetchOnReconnect: false,
+				retry: 1,
+				staleTime: 5 * 1000,
+			},
+		},
+	});
+
 	return (
-		<FuegoProvider fuego={fuego}>
-			<Provider>
-				<ChakraProvider theme={theme}>
-					<FirebaseAuthState>
-						<Component {...pageProps} />
-						<ToastContainer
-							position="top-center"
-							autoClose={2000}
-							hideProgressBar={false}
-							newestOnTop={false}
-							closeOnClick
-							rtl={false}
-							pauseOnFocusLoss
-							draggable
-							pauseOnHover
-						/>
-					</FirebaseAuthState>
-				</ChakraProvider>
-			</Provider>
-		</FuegoProvider>
+		<QueryClientProvider client={queryClient}>
+			<FuegoProvider fuego={fuego}>
+				<Provider>
+					<ChakraProvider theme={theme}>
+						<FirebaseAuthState>
+							<Component {...pageProps} />
+							<ToastContainer
+								position="top-center"
+								autoClose={2000}
+								hideProgressBar={false}
+								newestOnTop={false}
+								closeOnClick
+								rtl={false}
+								pauseOnFocusLoss
+								draggable
+								pauseOnHover
+							/>
+						</FirebaseAuthState>
+					</ChakraProvider>
+				</Provider>
+			</FuegoProvider>
+		</QueryClientProvider>
 	);
 }
 

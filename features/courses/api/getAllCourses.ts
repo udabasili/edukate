@@ -1,5 +1,14 @@
 import { firestoredb } from '@/lib/firebase';
-import { collection, DocumentData, getDocs, limit, Query, query, QueryDocumentSnapshot } from 'firebase/firestore';
+import {
+	collection,
+	DocumentData,
+	getDocs,
+	limit,
+	orderBy,
+	Query,
+	query,
+	QueryDocumentSnapshot,
+} from 'firebase/firestore';
 import React from 'react';
 import { CourseType } from '../types';
 const coursesRef = collection(firestoredb, 'courses');
@@ -15,7 +24,7 @@ type Return = {
 export const getAllCourses = async (limitNo?: number): Promise<Return> => {
 	const courses: Array<CourseType> = [];
 	let first: Query<DocumentData>;
-	first = limitNo ? query(coursesRef, limit(limitNo)) : query(coursesRef);
+	first = limitNo ? query(coursesRef, limit(limitNo), orderBy('link_name')) : query(coursesRef, orderBy('link_name'));
 	const querySnapshot = await getDocs(first);
 	querySnapshot.forEach((doc) => {
 		courses.push({

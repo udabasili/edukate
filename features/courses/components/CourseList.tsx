@@ -1,7 +1,7 @@
 import React from 'react';
 import { Course, CourseListContainer } from './index.styled';
 import Image from 'next/image';
-import { Heading, Text } from '@chakra-ui/react';
+import { Flex, Heading, Text } from '@chakra-ui/react';
 import { Rating } from '@/components/Elements/Rating';
 import { CourseType } from '../types';
 import { Spinner } from '@/components/Elements';
@@ -19,7 +19,6 @@ type CourseListProps = {
 
 export const CourseList = (props: CourseListProps) => {
 	const { coursesList, fetchMoreData, hasMore } = props;
-
 	return (
 		<CourseListContainer>
 			<InfiniteScroll
@@ -27,7 +26,11 @@ export const CourseList = (props: CourseListProps) => {
 				next={fetchMoreData}
 				className={styles.courseListContainer}
 				hasMore={hasMore}
-				loader={<Spinner size={'md'} variant="primary" />}
+				loader={
+					<Flex w="100%" p={4} color="white" display="flex" alignItems="flex-start" justifyContent="center">
+						<Spinner size={'md'} variant="primary" />
+					</Flex>
+				}
 			>
 				{coursesList.map((course) => (
 					<CourseItem key={course.id} course={course} />

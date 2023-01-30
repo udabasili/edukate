@@ -39,13 +39,13 @@ export const FilterMobileButton = styled(Button)`
 export const CourseListContainer = styled.div`
 	position: relative;
 	overflow-y: auto;
-	grid-column: col-end 2 / full-end;
+	grid-column: full-start / full-end;
 	display: grid;
 	grid-template-columns: 1fr;
 	column-gap: 1.5rem;
 	row-gap: 2rem;
-	margin: 1rem;
 	min-height: 90vh;
+	margin-top: 4rem;
 
 	.spinner {
 		position: absolute;

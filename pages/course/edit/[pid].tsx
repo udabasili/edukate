@@ -3,8 +3,6 @@ import colors from '@/constant/colors';
 import { Button, FormControl, FormLabel, IconButton, Input, Select } from '@chakra-ui/react';
 import { AddCourseContainer, EditableCustom, TabsCustom } from '@/features/course/components/index.styled';
 import {
-	Box,
-	Editable,
 	EditableInput,
 	EditablePreview,
 	Flex,
@@ -17,14 +15,13 @@ import {
 } from '@chakra-ui/react';
 import { useQuill } from 'react-quilljs';
 import 'quill/dist/quill.snow.css';
-import React, { ChangeEvent, useContext, useReducer, useState } from 'react';
+import React, { useContext, useReducer, useState } from 'react';
 import { AddIcon } from '@chakra-ui/icons';
 import { AddFAQ } from '@/features/course/components/AddFAQ';
 import { FAQ } from '@/features/course/types';
 import { CATEGORIES } from '@/data/categories';
 import { Context } from '@/store/appContext';
-import { reducer, initialState } from '@/store/course';
-import { addCourse } from '@/features/course/api/addCourse';
+import { reducer } from '@/store/course';
 import { FirebaseError } from 'firebase/app';
 import { firebaseErrors } from '@/data/firebaseErrors';
 import { toast } from 'react-toastify';
@@ -34,7 +31,6 @@ import { firestoredb } from '@/lib/firebase';
 import { CourseType } from '@/features/courses/types';
 import { doc, getDoc } from 'firebase/firestore';
 import { editCourse } from '@/features/course/api/editCourse';
-import { withAuthUser, AuthAction } from 'next-firebase-auth';
 import { withProtected } from '@/hook/route';
 
 type Props = {

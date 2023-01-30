@@ -10,7 +10,7 @@ import NextLink from 'next/link';
 import { Context } from '@/store/appContext';
 import { EditIcon } from '@chakra-ui/icons';
 import { BiHeartSquare } from 'react-icons/bi';
-import { addItemToCart, CartCredentialsDTO } from '@/features/cart/api/addItemToCart';
+import { addItemToCart } from '@/features/cart/api/addItemToCart';
 
 type Props = {
 	course: CourseType;
