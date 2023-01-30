@@ -98,7 +98,6 @@ export const Course = styled.div`
 export const SortContainer = styled.div`
 	height: 10vh;
 	background-color: white;
-	box-shadow: 0px 10px 5px 0px rgba(0, 0, 0, 0.28);
 	margin: 1rem 1rem;
 	display: flex;
 	grid-column: full-start / full-end;

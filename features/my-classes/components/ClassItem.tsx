@@ -13,7 +13,7 @@ export const ClassItem = ({ enrolledClass }: Props) => {
 	return (
 		<NextLink key={enrolledClass.enrolledId} href={`/course/${enrolledClass.courseId}`} passHref>
 			<ClassItemContainer w="100%" boxShadow="base" pb={3}>
-				<Image src={enrolledClass.image_url} alt={enrolledClass.link_name} />
+				<Image src={enrolledClass.image_url} alt={enrolledClass.link_name} h={200} objectFit="cover" />
 				<Menu>
 					<OptionMenu as={IconButton} aria-label="Options" icon={<HamburgerIcon />} variant="outline" />
 					<MenuList>

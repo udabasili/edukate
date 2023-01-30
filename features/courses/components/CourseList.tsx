@@ -27,7 +27,15 @@ export const CourseList = (props: CourseListProps) => {
 				className={styles.courseListContainer}
 				hasMore={hasMore}
 				loader={
-					<Flex w="100%" p={4} color="white" display="flex" alignItems="flex-start" justifyContent="center">
+					<Flex
+						w="100%"
+						p={4}
+						color="white"
+						display="flex"
+						alignItems="flex-start"
+						justifyContent="center"
+						h="48"
+					>
 						<Spinner size={'md'} variant="primary" />
 					</Flex>
 				}
